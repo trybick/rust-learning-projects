@@ -19,5 +19,6 @@ fn main() {
         .interact()
         .unwrap();
 
-        println!("Enjoy your {}!", options[selection]);
+        let is_usd_to_chinese = selection as i32 == 0;
+
 }
