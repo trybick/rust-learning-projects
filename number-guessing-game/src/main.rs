@@ -11,16 +11,19 @@ fn get_input(answer: i32) {
 
     println!();
     if input_number == answer {
-        println!("You win!");
+        println!("{} is the correct answer!", answer);
+    } else if input_number > answer {
+        println!("Too high! Enter a new number: ");
+        get_input(answer);
     } else {
-        get_input(answer)
+        println!("Too low! Enter a new number: ");
+        get_input(answer);
     }
 }
 
 fn main() {
     let answer = rand::thread_rng().gen_range(1..100);
-    println!("answer is {}", answer);
-
-    println!("Try to guess the correct number! Please enter a number from 1 to 100: ");
+    // println!("answer is {}", answer);
+    println!("Enter a number from 1 to 100: ");
     get_input(answer);
 }
