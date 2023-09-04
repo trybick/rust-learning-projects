@@ -4,11 +4,7 @@ use rand::Rng;
 // If you guessed correctly, it will say you win.
 // If you're too high or too low it will also let you know.
 
-fn main() {
-    let answer = rand::thread_rng().gen_range(1..100);
-    println!("{}", answer);
-
-    println!("Try to guess the correct number! Please enter a number from 1 to 100: ");
+fn get_input(answer: i32) {
     let mut input = String::new();
     std::io::stdin().read_line(&mut input).unwrap();
     let input_number: i32 = input.trim().parse().unwrap();
@@ -16,9 +12,15 @@ fn main() {
     println!();
     if input_number == answer {
         println!("You win!");
-    } else if input_number > answer {
-        println!("Too high!");
     } else {
-        println!("Too low!");
+        get_input(answer)
     }
+}
+
+fn main() {
+    let answer = rand::thread_rng().gen_range(1..100);
+    println!("answer is {}", answer);
+
+    println!("Try to guess the correct number! Please enter a number from 1 to 100: ");
+    get_input(answer);
 }
